@@ -11,7 +11,10 @@
         <DataGrid HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"
                   MaxHeight="{x:Static AttachedProperty:WindowProperties.OneHalfHeightNoBorder}"
                   Name="MainGrid"
-                  ItemsSource="{Binding Entities}">
+                  ItemsSource="{Binding Entities}"
+                   AutoGenerateColumns="true"
+                  AutoGeneratingColumn="MainGrid_AutoGeneratingColumn"
+                  >
 
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="AutoGeneratingColumn">

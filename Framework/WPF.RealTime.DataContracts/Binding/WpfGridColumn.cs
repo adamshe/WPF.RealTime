@@ -31,16 +31,16 @@ namespace WPF.RealTime.Data.Binding
 
             TextBlock cellElement = new TextBlock();
 
-            System.Windows.Data.Binding textBinding = new System.Windows.Data.Binding(cell.Column.Header + ".DisplayValue")
-                                                          {Source = dataItem};
+            System.Windows.Data.Binding textBinding = new System.Windows.Data.Binding(cell.Column.Header + ".DisplayValue");
+                                                          //{Source = dataItem};
             cellElement.SetBinding(TextBlock.TextProperty, textBinding);
 
-            System.Windows.Data.Binding backgroundBinding = new System.Windows.Data.Binding(cell.Column.Header + ".Background")
-                                                                {Source = dataItem};
+            System.Windows.Data.Binding backgroundBinding = new System.Windows.Data.Binding(cell.Column.Header + ".Background");
+                                                              //  {Source = dataItem};
             cellElement.SetBinding(TextBlock.BackgroundProperty, backgroundBinding);
 
-            System.Windows.Data.Binding foreGroundBinding = new System.Windows.Data.Binding(cell.Column.Header + ".Foreground")
-                                                                {Source = dataItem};
+            System.Windows.Data.Binding foreGroundBinding = new System.Windows.Data.Binding(cell.Column.Header + ".Foreground");
+                                                                //{Source = dataItem};
             cellElement.SetBinding(TextBlock.ForegroundProperty, foreGroundBinding);
 
             return cellElement;

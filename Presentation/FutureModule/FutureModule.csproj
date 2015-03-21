@@ -79,6 +79,9 @@
     <Compile Include="ServiceObservers\FutureServiceObserver.cs" />
     <Compile Include="ViewModels\RibbonViewModel.cs" />
     <Compile Include="ViewModels\FutureViewModel.cs" />
+    <Compile Include="Views\View.xaml.cs">
+      <DependentUpon>View.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Framework\WPF.RealTime.DataContracts\WPF.RealTime.Data.csproj">

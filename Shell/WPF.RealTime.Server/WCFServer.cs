@@ -29,6 +29,12 @@ namespace WPF.RealTime.Server
                 _bondFuture = _channelBondFactory.CreateChannel();
             }
 
+            public void Close()
+            {
+                _channelBondFactory.Close();
+                _channelFutureFactory.Close();
+            }
+
             #region IRemoteSubscriptionService Members
 
             public void GetData(RequestRecord requestRecord)
@@ -51,9 +57,11 @@ namespace WPF.RealTime.Server
         }
 
         private readonly ServiceHost _host;
+        private readonly ConnectionListener _listener;
         public WcfServer()
         {
-            _host = new ServiceHost(new ConnectionListener());
+            _listener = new ConnectionListener();
+            _host = new ServiceHost(_listener);
             _host.AddServiceEndpoint(typeof(IRemoteSubscriptionService),
                 new NetNamedPipeBinding(NetNamedPipeSecurityMode.None) { MaxReceivedMessageSize = 5000000, MaxBufferSize = 5000000 },
                 "net.pipe://WPFRealTime/SubscriptionService");
@@ -64,6 +72,7 @@ namespace WPF.RealTime.Server
 
         public void Dispose()
         {
+            _listener.Close();
             _host.Close();
         }
 
